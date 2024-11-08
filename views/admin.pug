@@ -1,0 +1,28 @@
+head 
+  title List User 
+  link(rel="stylesheet", href="/public/style.css")
+  link(rel="stylesheet", href="/public/logout-form.css")
+body
+  div.menu
+    form.log-out(method="POST", action="/logout")
+      button.logout(type="submit") Đăng xuất
+  div.list-user
+    h2 List User
+    a(href="/admin/libary-manager") Libary manager
+    a(href="/admin/create-admin") Create user
+    table(class="content-table")  
+      thead 
+        td Fullname
+        td Username
+        td Role
+        td Action
+      tbody 
+        each user in users
+          tr 
+            td=user.fullname 
+            td=user.username
+            td=user.role
+            td 
+              a(href=`/admin/list-user/delete/${user._id}`) Delete 
+              br
+              a(href=`/admin/list-user/update/${user._id}`) Update  

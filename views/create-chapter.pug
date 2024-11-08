@@ -1,0 +1,22 @@
+html
+  head
+    title Thêm chapter mới
+    link(rel="stylesheet", href="/public/create-chapter-form.css")
+
+  body
+    form(id="createItemForm" method="POST" action=`/admin/create-chapter/${slug}` enctype="multipart/form-data")
+      h1 Thêm chapter mới
+      div
+        p Chapter number:
+        input(type="text" name="chapter_number" required placeholder="Nhập chapter truyện")
+
+      div
+        p Name chapter:
+        input(type="text" name="name_chapter" required placeholder="Nhập tên chapter")
+
+      div
+        p Chọn ảnh:
+        input(type="file" name="content" multiple)
+        img(id="preview-img", src="", style="max-width: 200px; display: none;")
+
+      button(type="submit") Thêm chapter

@@ -1,0 +1,27 @@
+.menu {
+    width: 100%;
+    background-color: rgba(227, 229, 232, .5);
+    height: 60px;
+    display: flex;
+    align-items: center;
+
+}
+form.log-out {
+    text-align: right;
+    margin-left: auto;
+}
+
+.logout {
+    font-size: 16px;
+    padding: 8px 10px;
+    border: 0;
+    background-color: #039be5;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+a.link {
+    margin: 5px;
+} 

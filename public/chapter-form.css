@@ -1,0 +1,30 @@
+* {
+    font-family: sans-serif;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+
+
+div.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+    flex-direction: column;
+}
+  
+
+.chapter-content {
+    width: 1200px;
+    margin: 0 auto; /* Căn giữa khung chứa nội dung */
+    height: 100%;
+}
+
+.chapter-content img {
+    display: block; /* Hình ảnh sẽ được hiển thị như một khối */
+    margin: 0 auto; /* Căn giữa hình ảnh */
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}

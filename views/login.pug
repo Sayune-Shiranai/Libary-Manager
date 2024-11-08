@@ -1,0 +1,13 @@
+html
+  head
+    title Login
+    link(rel="stylesheet", href="/public/login-form.css")
+  body
+    div.ar_form
+      h2 Đăng nhập
+      form(method="post" action="/sign-in")
+        input(type="text" name="username" placeholder="Username")
+        input(type="password" name="password" placeholder="Password")
+        div.control
+          input(type="submit" name="action" value="Login")
+          input(type="submit" name="action" value="Register")

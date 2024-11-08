@@ -1,0 +1,70 @@
+doctype html
+html
+  head
+    title Chỉnh sửa truyện
+    link(rel="stylesheet" href="/public/update-item-form.css")
+    script.
+      function previewImage(event) {
+        var img = document.getElementById('preview-img');
+        var deleteBtn = document.getElementById('delete-btn');
+        var file = event.target.files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            img.src = e.target.result;
+            img.style.display = 'block';
+            deleteBtn.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+        } else {
+          img.style.display = 'none';
+          deleteBtn.style.display = 'none';
+        }
+      }
+
+      function deleteImage() {
+        var img = document.getElementById('preview-img');
+        var deleteBtn = document.getElementById('delete-btn');
+        img.style.display = 'none';
+        var inputFile = document.querySelector('input[name="imgavt"]');
+        inputFile.value = '';
+        deleteBtn.style.display = 'none'; // Ẩn nút x sau khi xóa ảnh
+        var deleteInput = document.createElement('input');
+        deleteInput.type = 'hidden';
+        deleteInput.name = 'deleteImg';
+        deleteInput.value = 'true';
+        document.forms[0].appendChild(deleteInput);
+      }
+
+  body
+    form(method="POST" action=`/admin/libary-manager/update/${item._id}` enctype="multipart/form-data")
+      h1 Chỉnh sửa truyện
+      div
+        p Tên truyện:
+        input(type="text" name="itemname" value=item.itemname placeholder="Nhập tên truyện")
+
+      div
+        p Chọn thể loại:
+        select(name="theloai" required)
+          option(value="Không có" selected=(item.theloai == 'Không có')) Không có
+          option(value="Romance" selected=(item.theloai == 'Romance')) Romance
+          option(value="theloai3" selected=(item.theloai == 'theloai3')) Thể loại 3
+
+      div
+        p Tác giả:
+        input(type="text" name="tacgia" value=item.tacgia placeholder="Nhập tên tác giả")
+
+      div
+        p Mô tả nội dung:
+        textarea(name="noidung" placeholder="Nhập mô tả nội dung")=item.noidung
+
+      div
+        p Chọn ảnh đại diện:
+        input(type="file" name="imgavt" onchange="previewImage(event)")
+        input(type="hidden" name="oldImgavt" value=item.imgavt)
+
+        div(style="position: relative; display: inline-block;")
+          img(id="preview-img" src=`/public/avt-item/${item.imgavt}` style="max-width: 200px; display: block;")
+          button.delete-btn(id="delete-btn" type="button" onclick="deleteImage()" style="position: absolute; top: 0; right: 0; background: transparent; border: none; color: red; font-size: 20px; cursor: pointer;") &times;
+
+      button.submit(type="submit") Update

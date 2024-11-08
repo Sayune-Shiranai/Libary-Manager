@@ -1,0 +1,27 @@
+html 
+  head 
+    title List Chapters
+    link(rel="stylesheet", href="/public/list-chapters-form.css")
+    link(rel="stylesheet", href="/public/logout-form.css")
+  body
+    div.menu
+      form.log-out(method="POST", action="/logout")
+        button.logout(type="submit") Đăng xuất
+    div.list-chapter
+      h2 List Chapters
+      a.link(href="/admin/libary-manager") Libary 
+      a.link(href=`/admin/create-chapter/${slug}`) Create Chapter
+      table(class="content-table")  
+        thead 
+          td Chapter
+          td Tên chapter
+          td Action
+        tbody 
+          each chapter in chapters
+            tr 
+              td=chapter.chapter_number 
+              td=chapter.name_chapter
+              td 
+                a(href=`/admin/list-chapters/delete/${chapter._id}`) Delete 
+              //-   br
+              //-   a(href=`/admin/libary-manager/update/${item._id}`) Update  tại sao list chapter ko theo từng truyện ?

@@ -1,0 +1,8 @@
+html 
+  title=chapter.title
+  link(rel="stylesheet", href="/public/chapter-form.css")
+body
+  div.content
+    div.chapter-content
+      each image in chapter.content
+        img(src=image, alt="Chapter image")  

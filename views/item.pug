@@ -1,0 +1,51 @@
+html
+  head
+    title= item.itemname
+    link(rel="stylesheet" href="/public/item-form.css")
+    link(rel="stylesheet" href="/public/logout-form.css")
+  body
+    div.menu
+      form.log-out(method="POST", action="/logout")
+        button.logout(type="submit") Đăng xuất
+    div.story-container
+      div.story-main
+        div.story-header
+          div.image-wrapper
+            img(src=`/public/avt-item/${item.imgavt}` alt="Bìa truyện")
+          div.info-wrapper
+            h2= item.itemname
+            ul.genre-list
+              each theloai in item.theloai.split(', ')
+                li.tag= theloai
+            div.detail-item
+              div.info-item
+                strong Tác giả:
+                p= item.tacgia
+              //- div.info-item
+              //-   strong Họa sĩ:
+              //-   p= item.hoasi
+              div.info-item
+                strong Tình trạng:
+                p= item.tinhtrang
+
+            //- div.story-stats
+            //-   div.stat-item
+            //-     span.icon-heart
+            //-     p= item.likes + " lượt thích"
+            //-   div.stat-item
+            //-     span.icon-star
+            //-     p Đánh giá
+            //-   div.stat-item
+            //-     span.icon-comment
+            //-     p Bình luận
+            //-   div.stat-item
+            //-     span.icon-share
+            //-     p Chia sẻ
+      div.story-summary
+        h2 Tóm tắt
+        p= item.noidung
+    div.list-chapters
+      h2 Danh sách chương
+      div.chapter
+        each chapter in chapters
+          a(href=`/truyen/${item.slug}/chapter-${chapter.chapter_number}`) Chapter #{chapter.chapter_number}

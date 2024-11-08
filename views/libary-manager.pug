@@ -1,0 +1,31 @@
+head 
+  title Libary Management 
+  link(rel="stylesheet", href="/public/libary-manager-form.css")
+  link(rel="stylesheet", href="/public/logout-form.css")
+body 
+  div.menu
+    form.log-out(method="POST", action="/logout")
+      button.logout(type="submit") Đăng xuất
+  div.libary-manager
+    h2 Libary Management
+    a(href="/admin/list-user") List User
+    a(href="/admin/create-item") Create Item
+    table(class="content-table")  
+      thead 
+        td Tên truyện
+        td Thể loại
+        td Tác giả 
+        td Số chương
+        td Action
+      tbody 
+        each item in libary
+          tr 
+            td=item.itemname 
+            td=item.theloai
+            td=item.tacgia
+            td
+              a(href=`/admin/list-chapters/${item.slug}`) view 
+            td 
+              a(href=`/admin/libary-manager/delete/${item._id}`) Delete 
+              br
+              a(href=`/admin/libary-manager/update/${item._id}`) Update  

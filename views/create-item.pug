@@ -1,0 +1,47 @@
+html
+  head
+    title Thêm mới truyện
+    link(rel="stylesheet", href="/public/create-item-form.css")
+    script.
+      function previewImage(event) {
+        var img = document.getElementById('preview-img');
+        var file = event.target.files[0];
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            img.src = e.target.result;
+            img.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+        } else {
+          img.style.display = 'none';
+        }
+      }
+  body
+    form( method="POST", action="/admin/create-item" enctype="multipart/form-data")
+      h1 Thêm mới truyện
+      div
+        p Tên truyện:
+        input(type="text" name="itemname" required placeholder="Nhập tên truyện")
+
+      div
+        p Chọn thể loại:
+        select(name="theloai", required)
+          option(value="Không có") Không có
+          option(value="Romance") Romance
+          option(value="Drama") Drama
+
+      div
+        p Tác giả:
+        input(type="text" name="tacgia" required placeholder="Nhập tên tác giả")
+
+      div
+        p Mô tả nội dung:
+        textarea(name="noidung" placeholder="Nhập mô tả nội dung" required)
+
+      div
+        p Chọn ảnh đại diện:
+        input(type="file" name="imgavt" accept="image/*" onchange="previewImage(event)")
+        img(id="preview-img", src="", style="max-width: 200px; display: none;")
+
+      button(type="submit") Thêm truyện

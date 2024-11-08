@@ -1,0 +1,21 @@
+html
+  head
+    title Home
+    link(rel="stylesheet", href="/public/home-form.css")
+    link(rel="stylesheet", href="/public/logout-form.css")
+  body
+    div.menu
+      form.log-out(method="POST", action="/logout")
+        button.logout(type="submit") Đăng xuất
+    div.home
+      each item in libary
+        div.list-item-new
+          div.detail-item-new
+            div.item-new-wrapper
+              a(href=`/truyen/${item.slug}` title=item.itemname)
+                img.new-img(src=`/public/avt-item/${item.imgavt}`)
+              div.title-items-new
+                div.time-item-new
+                  time.time-new(title='12-07-2024 02:08:48' datetime='2024-07-12T02:08:48+07:00') 1 ngày
+            div.series-title-new
+              a(href=`/truyen/${item.slug}` title=item.itemname) #{item.itemname}

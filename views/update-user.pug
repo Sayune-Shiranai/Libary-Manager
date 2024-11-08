@@ -1,0 +1,10 @@
+html
+  head
+    title Update user
+  body 
+    h2 Update user 
+    form(action=`/admin/list-user/update/${user._id}` method="post")
+      input(type="text" name="fullname" value=user.fullname) 
+      input(type="text" name="username" value=user.username) 
+      input(type="text" name="role" value=user.role)  
+      input(type="submit" value="Update") 

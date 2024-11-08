@@ -1,0 +1,17 @@
+html 
+  title Create new user
+  link(rel="stylesheet", href="/public/create-user-form.css")
+body 
+  div.form-box
+    form.form(action="/admin/create-admin" method="post")
+      span.title Sign up
+      span.subtitle Create a free account with your email.
+      div.form-container
+        input.input(type='text' placeholder='Full Name' name='fullname')
+        input.input(type='text' placeholder='Username' name='username')
+        input.input(type='text' placeholder='Role' name='role')
+        input.input(type='password' placeholder='Password' name='password')
+        input.input(type='password' placeholder='Confirm Password' name='confirm')
+      button(type='submit') Sign up
+    div.form-section
+      a(href='/admin/list-user' target='_blank') Back
